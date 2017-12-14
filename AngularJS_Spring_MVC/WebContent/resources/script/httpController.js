@@ -1,7 +1,7 @@
 var app = angular.module('loja', ['ngRoute']);
 
 // INICIO ANGULAR HTTP
-/*app.controller('pegarResposta', function($scope, $http){
+app.controller('pegarResposta', function($scope, $http){
 	$scope.pegarResposta = function(){
 		$http.get('pegarResposta').then(function (response) {
 			document.getElementById('resposta').value = "" + response.data;
@@ -18,7 +18,7 @@ app.controller('pegarResposta2', function($scope, $http){
 		});
 	};
 });
-*/
+
 app.controller('pegarRespostaJson', function($scope, $http){
 	$http.get("pegarRespostaJson").then(function (response){
 		$scope.lista = response.data;
