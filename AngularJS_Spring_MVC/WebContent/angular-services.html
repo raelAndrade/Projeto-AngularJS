@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html ng-app="loja">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+	<title>AngukarJS - Filtros</title>	
+	<script type="text/javascript" src="resources/script/angular.min.js"></script>
+	<script type="text/javascript" src="resources/script/angular-route.js"></script>
+	<script type="text/javascript" src="resources/script/servicesController.js"></script>
+</head>
+
+<body id="corpo">
+	
+	<div ng-controller="localizacao">
+		<p>A URL dessa página é:</p>
+		<h3>{{myUrl}}</h3>
+	</div>
+	
+	<div ng-controller="controllerTimeOut">
+		<p>Timeout services:</p>
+		<h3>{{timermsg}}</h3>
+	</div>
+	
+	<div ng-controller="controllerIntervalo">
+		<p>O tempo é:</p>
+		<h3>{{intervalo}}</h3>
+	</div>
+	
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html ng-app="loja">
+<head>
+	<meta charset="ISO-8859-1">
+	<title>AngularJS - Filtros</title>
+	<script type="text/javascript" src="resources/script/angular.min.js"></script>
+	<script type="text/javascript" src="resources/script/angular-route.js"></script>
+	<script type="text/javascript" src="resources/script/filter.js"></script>
+</head>
+<body id="corpo">
+
+	<div ng-controller="personCtrl">
+	
+		<p>O nome é {{lastName | uppercase}}</p>
+		<p>O nome é {{firstName | lowercase}}</p>
+	
+	</div>
+	
+	<div ng-controller="namesCtrl">
+		<p>Loop em objetos:</p>
+		<ul>
+			<li ng-repeat="x in names | orderBy:'name'">{{x.name + ', '+ x.country}}</li>
+		</ul>
+	</div>
+	
+	<div ng-conttoller="costCtrl">
+		<h1>Preço: {{price | currency}}</h1>
+	</div>
+	
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html ng-app="loja">
+<head>
+	<meta charset="UTF-8">
+	<title>AngukarJS - Spring - MVC</title>
+	<script type="text/javascript" src="resources/script/angular.min.js"></script>
+	<script type="text/javascript" src="resources/script/angular-route.js"></script>
+	<script type="text/javascript" src="resources/script/controllerTest.js"></script>
+	 
+</head>
+<body id="corpo">
+	<h1>Expressões 1</h1>
+	<p>{{55 + 5}}</p>
+	
+	<h1>Expressões 2</h1>
+	<div ng-init="myCol='green'">
+		<input style="background-color: {{myCol}}" ng-model="myCol" value="{{myCol}}" />
+	</div>
+	
+	<h1>Expressões 3</h1>
+	<div ng-init="valor=2;cota=5">
+		<p>Total em dolar: {{valor * cota}}</p>
+	</div>
+	
+	<h1>Expressões 4</h1>
+	<div ng-init="quantity=1;cost=5">
+		<p>Total in dollar: <span ng-bind="quantity * cost"></span></p>
+	</div>
+	
+	<h1>Expressões 5 Strings</h1>
+	<div ng-init="firstName='Israel'; lastName='Andrade'">
+		<p>Meu nome é: {{firstName + " " + lastName}}</p>
+	</div>
+	
+	<div ng-init="firstName='Israel'; lastName='Andrade'">
+		<p>Meu nome é: <span ng-bind="firstName + ' ' + lastName"></span></p>
+	</div>
+	
+	<h1>AngularJS Object</h1>
+	<div ng-init="person={firstName:'Israel', lastName:'Gonçalves'}">
+		<p>Meu nome é: {{person.firstName}}</p>
+	</div>
+	
+	<div ng-init="person={firstName:'Israel', lastName:'Gonçalves'}">
+		<p>Nome é: <span ng-bind="person.lastName"></span></p>
+	</div>
+	
+	<h1>AngularJS Arrays</h1>
+	<div ng-init="points=[1,15,19,2,40]">
+		<p>Resultado: {{ points[4] }}</p>
+	</div>
+	
+	<div ng-init="points=[1,15,19,2,40]">
+		<p>Resultado: <span ng-bind="points[2] + points[3]"></span></p>
+	</div>
+	
+	<div w3-test-directive></div>
+	
+	<form name="myForm">
+		Email:
+		<input type="email" name="myAddress" ng-model="text">
+		<span ng-show="myForm.myAddress.$error.email">Not a valid e email address</span>
+	</form>
+	
+</body>
+</html>

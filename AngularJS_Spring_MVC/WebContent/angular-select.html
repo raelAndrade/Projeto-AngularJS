@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html ng-app="loja">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+	<title>AngularJS - Select</title>	
+	<script type="text/javascript" src="resources/script/angular.min.js"></script>
+	<script type="text/javascript" src="resources/script/angular-route.js"></script>
+	<script type="text/javascript" src="resources/script/selectController.js"></script>
+</head>
+
+<body id="corpo">
+	
+	<div ng-controller="namesController">
+		<select ng-model="selectedName" ng-options="x for x in names">
+		</select>
+	</div>
+	
+	<br><br><br><br>
+	
+	<div ng-controller="namesController">
+		<select>
+			<option ng-repeat="x in names">{{x}}</option>
+		</select>
+	</div>
+	
+	<br><br><br><br>
+	
+	<div ng-controller="pegarRespostaJson">
+		<p>Selecione o nome:</p>
+		<select ng-model="nomeSelecionado">
+			<option ng-repeat="x in names" value="{{x.nome}}">{{x.nome}}</option>
+		</select>
+		<h1>Selecionado: {{nomeSelecionado}}</h1>
+	</div>
+	
+	<br><br><br><br>
+	
+	<div ng-controller="pegarRespostaJson">
+		<p>Selecione o nome:</p>
+		
+		<select ng-model="selecionado" ng-options="x for (x, y) in lista"></select>
+		
+		<h1>Nome: {{selecionado.nome}}</h1>
+		<h2>Cidade: {{selecionado.cidade}}</h2>
+	</div>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html ng-app="loja">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+	<title>AngularJS - Http</title>	
+	<script type="text/javascript" src="resources/script/angular.min.js"></script>
+	<script type="text/javascript" src="resources/script/angular-route.js"></script>
+	<script type="text/javascript" src="resources/script/httpController.js"></script>
+</head>
+
+<body id="corpo">
+
+	<p>Trabalhando com o servidor 1</p>
+	<button ng-controller="pegarResposta" ng-click="pegarResposta();">Pegar Resposta Servidor</button>
+	<input type="text" id="resposta">
+	
+	<p>Trabalhando com o servidor 2</p>
+	<button ng-controller="pegarResposta2" ng-click="pegarResposta2();">Pegar Resposta Servidor</button>
+	<input type="text" id="resposta2">
+	<input type="text" id="resposta3">
+	<input type="text" id="resposta4">
+
+</body>
+</html>
