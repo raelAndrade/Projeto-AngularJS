@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html ng-app="loja">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+	<title>AngularJS - Recursos</title>
+	<script type="text/javascript" src="resources/script/angular.min.js"></script>
+	<script type="text/javascript" src="resources/script/angular-route.js"></script>
+	<script type="text/javascript" src="resources/script/angular-resource.js"></script>
+	<script type="text/javascript" src="resources/script/formController.js"></script>
+</head>
+
+<body id="corpo">
+
+	<form>
+		Select a topic:
+		<select ng-model="myVar">
+			<option value="Selecione">
+			<option value="dogs">Dogs
+			<option value="tuts">Tutorials
+			<option value="cars">Cars
+		</select>
+	</form>
+	
+	<div ng-switch="myVar">
+		<div ng-switch-when="dogs">
+			<h1>Dogs</h1>
+			<p>Selecionou dogs.</p>
+		</div>
+		<div ng-switch-when="tuts">
+			<h1>Tutorials</h1>
+			<p>Selecionou Tutorials.</p>
+		</div>
+		<div ng-switch-when="cars">
+			<h1>Cars</h1>
+			<p>Selecionou cars.</p>
+		</div>
+	</div>
+	
+	<br><br><br><br>
+	
+	<div ng-controller="formCtrl">
+		<form novalidate>
+			First Name: <br>
+			<input type="text" ng-model="user.firstName"><br>
+			Last Name: <br>
+			<input type="text" ng-model="user.lastName">
+			<br><br>
+			<button ng-click="reset()">RESET</button>
+		</form>
+		<p>form = {{user}}</p>
+		<p>master = {{master}}</p>
+	</div>
+	
+	<br><br><br><br>
+	
+	<form name="myForm">
+		<input name="myInput" ng-model="myInput" required>
+	</form>
+	
+	<p>Verificando se o valor é válido:</p>
+	<h1>{{myForm.myInput.$valid}}</h1>
+	
+	<br><br><br><br>
+	
+	<form name="myForm2">
+		<input type="email" name="myInput2" ng-model="myInput2">
+	</form>
+	
+	<p>Validando o e-mail:</p>
+	<h1>{{myForm2.myInput2.$valid}}</h1>
+
+	<br><br><br><br>
+	
+	<form name="myForm3">
+		<p>Nome:
+			<input name="myName" ng-model="myName" required>
+			<span ng-show="myForm3.myName.$touched && myForm3.myName.$invalid">Nome obrigatório.</span>
+		</p>
+		<p>Address:
+			<input name="myAddress" ng-model="myAddress" required>
+			<span ng-show="myForm3.myAddress.$touched && myForm3.myAddress.$invalid">Nome obrigatório.</span>
+		</p>
+	</form>
+	
+</body>
+</html>

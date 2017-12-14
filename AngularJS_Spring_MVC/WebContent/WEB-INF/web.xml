@@ -30,7 +30,7 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>AngularJS_Spring_MVC</servlet-name>
-		<url-pattern>/AngularJS_Spring_MVC</url-pattern>
+		<url-pattern>/pessoa</url-pattern>
 	</servlet-mapping>
 	
 	 <!-- 
