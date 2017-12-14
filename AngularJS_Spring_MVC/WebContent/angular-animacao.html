@@ -2,40 +2,53 @@
 <html ng-app="loja">
 
 <head>
-	<meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
-	<title>AngularJS - Recursos</title>
-	<script type="text/javascript" src="resources/script/angular.min.js"></script>
-	<script type="text/javascript" src="resources/script/angular-route.js"></script>
-	<script type="text/javascript" src="resources/script/angular-resource.js"></script>
-	<script type="text/javascript" src="resources/script/angular-animate.js"></script>
-	<!-- <script type="text/javascript" src="resources/script/animacaoController.js"></script> -->
-	
-	<style type="text/css">
-		div {
-			transition: all linear 0.5s;
-			background-color: lightblue;
-			height: 100px;
-			width: 100%;
-			position: relative;
-			top: 0;
-			left: 0;
-		}
-		
-		.ng-hide {
-			height: 0;
-			width: 0;
-			background-color: transparent;
-			top: -200px;
-			left: 200px;
-		}
-	</style>
+<meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+<title>AngularJS - Recursos</title>
+<script type="text/javascript" src="resources/script/angular.min.js"></script>
+<script type="text/javascript" src="resources/script/angular-route.js"></script>
+<script type="text/javascript"
+	src="resources/script/angular-resource.js"></script>
+<script type="text/javascript" src="resources/script/angular-animate.js"></script>
+<script type="text/javascript"
+	src="resources/script/angular-locale_pt-br.js"></script>
+<script type="text/javascript"
+	src="resources/script/animacaoController.js"></script>
+
+<style type="text/css">
+div {
+	transition: all linear 0.5s;
+	background-color: lightblue;
+	height: 100px;
+	width: 100%;
+	position: relative;
+	top: 0;
+	left: 0;
+}
+
+.ng-hide {
+	height: 0;
+	width: 0;
+	background-color: transparent;
+	top: -200px;
+	left: 200px;
+}
+</style>
 </head>
 
 <body id="corpo">
 
-	<h1>Hide the DIV: <input type="checkbox" ng-model="myCheck"></h1>
+
+	<h1>
+		Hide the DIV: <input type="checkbox" ng-model="myCheck">
+	</h1>
+	<div ng-hide="myCheck">
+	</div>
 	
-	<div ng-hide="myCheck"></div>
+	<br><br>
+	
+	<input type="text" ng-model="moeda">
+	<h2>Moeda default: {{moeda | currency : "$ "}}</h2>
+	<h2>Moeda Real Brasil: {{moeda | currency: "R$ "}}</h2>
 
 </body>
 </html>

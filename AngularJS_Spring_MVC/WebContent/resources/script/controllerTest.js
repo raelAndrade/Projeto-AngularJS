@@ -54,6 +54,3 @@ app.controller('namesCtrl2', function($scope) {
 		'kai'
 	];
 });
-
-
-
