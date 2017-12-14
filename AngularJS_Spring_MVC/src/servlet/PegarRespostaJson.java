@@ -14,7 +14,7 @@ import org.json.JSONObject;
 /**
  * Servlet implementation class PegarRespostaJson
  */
-@WebServlet("/pegarRespostaJson")
+@WebServlet("/pessoas")
 public class PegarRespostaJson extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
@@ -28,10 +28,30 @@ public class PegarRespostaJson extends HttpServlet {
 		response.setContentType("application/json");
 		response.setHeader("Cache-Control", "nocache");
 		response.setCharacterEncoding("utf-8");
-
+		
+		System.out.println(request.getParameter("codPessoa"));
+		
 		JSONArray jsonArray = new JSONArray();
-
+		
 		JSONObject jsonObject = new JSONObject();
+		jsonObject.put("codPessoa", 60);
+		jsonObject.put("nome", "Alex");
+		jsonObject.put("cidade", "Mariná");
+		
+		jsonArray.put(jsonObject);
+		
+		jsonObject = new JSONObject();
+		jsonObject.put("codPessoa", 68);
+		jsonObject.put("nome", "Fernando");
+		jsonObject.put("cidade", "Salvador");
+		
+		jsonArray.put(jsonObject);
+		
+		response.getWriter().write(jsonArray.toString());
+
+		//JSONArray jsonArray = new JSONArray();
+
+		/*JSONObject jsonObject = new JSONObject();
 		jsonObject.put("nome", "Alex");
 		jsonObject.put("cidade", "Mariná");
 		jsonArray.put(jsonObject);
@@ -53,8 +73,9 @@ public class PegarRespostaJson extends HttpServlet {
 		jsonObject.put("nome", "José");
 		jsonObject.put("cidade", "Minas Gerais");
 		jsonArray.put(jsonObject);
-
+		
 		response.getWriter().write(jsonArray.toString());
+		*/
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)

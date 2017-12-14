@@ -23,25 +23,24 @@
 	</servlet-mapping>
  	-->
 	
-	<!--  
+	  
 	<servlet>
-		<servlet-name>PegarRespostaJson</servlet-name>
+		<servlet-name>AngularJS_Spring_MVC</servlet-name>
 		<servlet-class>servlet.PegarRespostaJson</servlet-class>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>PegarRespostaJson</servlet-name>
-		<url-pattern>/*</url-pattern>
+		<servlet-name>AngularJS_Spring_MVC</servlet-name>
+		<url-pattern>/AngularJS_Spring_MVC</url-pattern>
 	</servlet-mapping>
-	-->
 	
-	<!-- 
+	 <!-- 
 	<servlet>
 		<servlet-name>Pegar Resposta Json</servlet-name>
 		<servlet-class>servlet.PegarRespostaJson</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>Pegar Resposta Json</servlet-name>
-		<url-pattern>/*</url-pattern>
+		<url-pattern>/AngularJS_Spring_MVC</url-pattern>
 	</servlet-mapping>
-	-->
+	 -->
 </web-app>
