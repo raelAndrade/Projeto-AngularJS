@@ -28,7 +28,7 @@
 		<!-- maxWait tempo máximo sem conexão no pool -->
 		<!-- initialSize conexões iniciais no pool -->
 		<!-- validationQuery valida a conexão fazendo select -->
-		<!-- testWhileIdle esta conexões validas -->
+		<!-- testWhileIdle testa conexões validas -->
 		<!-- testOnBorrow validar conexões antes de remover -->
 		<!-- numTestsPerEvictionRun número de conexões a validar  -->
 		<!-- timeBetweenEvictionRunsMillis tempo entre as validações de conexão -->
