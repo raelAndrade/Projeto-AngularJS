@@ -12,12 +12,12 @@ app.config(function($routeProvider, $provide, $httpProvider, $locationProvider){
 	
 	.when("/cliente/:id", {
 		controller : "clienteController",
-		templateUrl: "clinete/cadastro.html"
+		templateUrl: "cliente/cadastro.html"
 	}) //editar
 	
 	.when("/cliente/cadastro", {
 		controller : "clienteController",
-		templateUrl: "/cliente/cadastro.html"
+		templateUrl: "cliente/cadastro.html"
 	}) // novo
 	
 	.otherwise({
