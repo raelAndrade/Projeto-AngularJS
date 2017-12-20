@@ -25,3 +25,23 @@ app.config(function($routeProvider, $provide, $httpProvider, $locationProvider){
 	});
 	
 });
+
+app.controller("clienteController", function($scope, $http){
+	
+	$scope.listarClientes = function(){
+		$http.get("cliente/listar").success(function(response){
+			$scope.data =  response;
+		}).error(function(response){
+			alert("Erro" + response);
+		});
+	};
+	
+	$scope.removerCliente = function(codCliente){
+		//alert(codCliente);
+		$http.delete("cliente/deletar/"+codCliente).success(function(response){
+			$scope.listarClientes();
+		}).error(function(data, status, headers, config){
+			alert("Error:" + status);
+		});
+	};
+});

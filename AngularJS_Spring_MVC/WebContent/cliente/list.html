@@ -1,6 +1,31 @@
-<html>
+<html ng-app="loja">
+
 <h1>Lista de Clientes</h1>
+
 <a href="#cliente/cadastro">
 	<p>Novo</p>
 </a>
+
+<div ng-controller="clienteController" ng-init="listarClientes();">
+	<div class="content table-responsive table-full-width">
+		<table class="table table-hover">
+			<thead>
+				<th>ID</th>
+				<th>Nome</th>
+				<th>Endereço</th>
+				<th>Telefone</th>
+				<th>Remover</th>
+			</thead>
+			<tbody>
+				<tr ng-repeat="cliente in data">
+					<td>{{cliente.id}}</td>
+					<td>{{cliente.nome}}</td>
+					<td>{{cliente.endereco}}</td>
+					<td>{{cliente.telefone}}</td>
+					<td><a href ng-click="removerCliente(cliente.id);">Apagar</a></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
 </html>

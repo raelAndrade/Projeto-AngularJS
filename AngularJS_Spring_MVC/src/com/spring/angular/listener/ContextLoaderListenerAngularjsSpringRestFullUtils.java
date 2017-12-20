@@ -8,7 +8,7 @@ import org.springframework.web.context.support.WebApplicationContextUtils;
  *  Acessa todo os objetos criados pelo contexto do spring
  * @author alex
  */
-public class ContextLoaderListenerCaixakiUtils extends
+public class ContextLoaderListenerAngularjsSpringRestFullUtils extends
 		org.springframework.web.context.ContextLoaderListener implements Serializable {
 	
 	private static final long serialVersionUID = 1L;

@@ -6,7 +6,7 @@
 <hibernate-configuration>
 	<session-factory name="sessionFactory">
 		<property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
-		<property name="hibernate.connection.datasource">java:/comp/env/jdbc/datasouce</property>
+		<property name="hibernate.connection.datasource">java:/comp/env/jdbc/datasource</property>
 		<property name="hibernate.default_schema">public</property>
 		<property name="hibernate.current_session_context_class">thread</property> <!-- Contexto de sessão a ser usado -->
 		<property name="hibernate.transaction.factory_class">org.hibernate.transaction.JDBCTransactionFactory</property> <!-- Delegada as transações (JDBC) a bases de dados (Padrão) -->
@@ -22,17 +22,7 @@
 		<property name="hibernate.connection.autocommit">false</property>  <!-- Commit Automatico -->
 		<property name="hibernate.connection.pool_size">50</property> <!-- Poll de conexão -->
 
-		<mapping class="curso.angular.model.Cliente" />
-		
-		<!-- 
-	    <mapping class="curso.angular.model.Estados" />
-	    <mapping class="curso.angular.model.Cidades" />
-		<mapping class="curso.angular.model.Cliente" />
-		<mapping class="curso.angular.model.Fornecedor" />
-		<mapping class="curso.angular.model.Livro" />
-		<mapping class="curso.angular.model.Pedido" />
-		<mapping class="curso.angular.model.ItemPedido" />
-		 -->
+		<mapping class="com.spring.angular.model.Cliente" />
 		
 	</session-factory>
 </hibernate-configuration>

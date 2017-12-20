@@ -11,7 +11,10 @@
 
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
-		<param-value>/WEB-INF/applicationContext.xml</param-value>
+		<param-value>
+			/WEB-INF/applicationContext.xml
+			/WEB-INF/spring-servlet-servlet.xml
+		</param-value>
 	</context-param>
 
 	<filter>
@@ -24,14 +27,17 @@
 		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
 		<init-param>
 			<param-name>encoding</param-name>
+			<!-- <param-value>UTF-8</param-value> -->
 			<param-value>ISO-8859-1</param-value>
 		</init-param>
 	</filter>
 
+	<!-- 
 	<filter>
 		<filter-name>springSecurityFilterChain</filter-name>
 		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
 	</filter>
+	 -->
 
 	<filter-mapping>
 		<filter-name>encoding-filter</filter-name>
@@ -43,13 +49,15 @@
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
 
+	<!-- 
 	<filter-mapping>
 		<filter-name>springSecurityFilterChain</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
+	 -->
 
 	<listener>
-		<listener-class>com.spring.angular.listener.ContextLoaderListenerCaixakiUtils</listener-class>
+		<listener-class>com.spring.angular.listener.ContextLoaderListenerAngularjsSpringRestFullUtils</listener-class>
 	</listener>
 
 	<!-- Trabalhando com Servlets -->
@@ -58,8 +66,8 @@
 	</listener>
 
 	<resource-ref>
-		<description>DataSource datasouce</description>
-		<res-ref-name>jdbc/datasouce</res-ref-name>
+		<description>DataSource datasource</description>
+		<res-ref-name>jdbc/datasource</res-ref-name>
 		<res-type>javax.sql.DataSource</res-type>
 		<res-auth>Container</res-auth>
 	</resource-ref>

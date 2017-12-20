@@ -18,7 +18,7 @@ import org.springframework.transaction.support.DefaultTransactionDefinition;
 import org.springframework.web.filter.DelegatingFilterProxy;
 
 import com.spring.angular.hibernate.HibernateUtil;
-import com.spring.angular.listener.ContextLoaderListenerCaixakiUtils;
+import com.spring.angular.listener.ContextLoaderListenerAngularjsSpringRestFullUtils;
 
 @WebFilter(urlPatterns = {"/*"}, description = "Session Checker Filter", filterName = "conexaoFilter")
 public class FilterOpenSessionInView extends DelegatingFilterProxy implements
@@ -38,7 +38,7 @@ public class FilterOpenSessionInView extends DelegatingFilterProxy implements
 			ServletResponse servletResponse, FilterChain chain)
 			throws IOException, ServletException {
 
-		BasicDataSource springDataSource = (BasicDataSource) ContextLoaderListenerCaixakiUtils
+		BasicDataSource springDataSource = (BasicDataSource) ContextLoaderListenerAngularjsSpringRestFullUtils
 				.getBean("springDataSource");
 		DefaultTransactionDefinition def = new DefaultTransactionDefinition();
 		PlatformTransactionManager transactionManager = new DataSourceTransactionManager(
