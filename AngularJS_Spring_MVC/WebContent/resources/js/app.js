@@ -10,7 +10,7 @@ app.config(function($routeProvider, $provide, $httpProvider, $locationProvider){
 		templateUrl: "cliente/list.html"
 	}) // listar
 	
-	.when("/cliente/:id", {
+	.when("/clienteedit/:id", {
 		controller : "clienteController",
 		templateUrl: "cliente/cadastro.html"
 	}) //editar
@@ -26,8 +26,38 @@ app.config(function($routeProvider, $provide, $httpProvider, $locationProvider){
 	
 });
 
-app.controller("clienteController", function($scope, $http){
+app.controller("clienteController", function($scope, $http, $location, $routeParams){
 	
+	//$scope.cliente = {};
+	
+	if($routeParams.id != null && $routeParams.id != undefined && $routeParams.id != ''){
+		$http.get("cliente/buscarcliente/" + $routeParams.id).success(function(response){
+			$scope.cliente =  response;
+		}).error(function(data, status, headers, config){
+			erro("Erro:" + status);
+		});
+	}else{
+		$scope.cliente = {};
+	}
+	
+	//Editar
+	$scope.editarCliente = function(id){
+		//alert($routeParams.id);
+		$location.path('clienteedit/' + id);
+		
+	};
+	
+	// Salvar
+	$scope.salvarCliente = function name(){		
+		//alert($scope.cliente.telefone);		
+		$http.post("cliente/salvar", $scope.cliente).success(function(response){
+			$scope.cliente = {};
+		}).error(function(data, status, headers, config) {
+			alert("Error:" + status);
+		});
+	};
+	
+	// Listar todos
 	$scope.listarClientes = function(){
 		$http.get("cliente/listar").success(function(response){
 			$scope.data =  response;
@@ -36,6 +66,7 @@ app.controller("clienteController", function($scope, $http){
 		});
 	};
 	
+	// Remover
 	$scope.removerCliente = function(codCliente){
 		//alert(codCliente);
 		$http.delete("cliente/deletar/"+codCliente).success(function(response){
@@ -44,4 +75,5 @@ app.controller("clienteController", function($scope, $http){
 			alert("Error:" + status);
 		});
 	};
+	
 });

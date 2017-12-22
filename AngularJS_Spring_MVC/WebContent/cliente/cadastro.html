@@ -3,4 +3,49 @@
 <a href="#clientelist">
 	<p>Lista de clientes</p>
 </a>
+
+<div class="col-lg-8 col-md-7">
+	<div class="card">
+		<div class="content">
+			<form id="formCliente" ng-submit="salvarCliente();">
+				<div class="row">
+					<div class="col-md-3">
+						<div class="form-group">
+							<label>ID</label> 
+							<input type="text" class="form-control border-input" ng-model="cliente.id" disabled />
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>Nome</label> 
+							<input type="text" class="form-control border-input" placeholder="Nome" ng-model="cliente.nome" required />
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="endereco">Endereço</label> 
+							<input type="text" class="form-control border-input" placeholder="Endereço" ng-model="cliente.endereco" required />
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-md-5">
+						<div class="form-group">
+							<label>Telefone</label> 
+							<input type="text" class="form-control border-input" placeholder="Telefone" required  ng-model="cliente.telefone" />
+						</div>
+					</div>
+				</div>
+
+				<button type="submit" class="btn btn-info btn-fill btn-wd">Cadastrar</button>
+				<button type="submit" class="btn btn-info btn-fill btn-wd" ng-click="$scope.cliente={}">Limpar</button>
+
+			</form>
+		</div>
+	</div>
+</div>
+
 </html>

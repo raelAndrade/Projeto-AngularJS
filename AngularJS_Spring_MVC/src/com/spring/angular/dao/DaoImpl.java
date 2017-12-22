@@ -59,4 +59,9 @@ public abstract class DaoImpl<T> implements DaoInterface<T> {
 		return sessionFactory.getCurrentSession().createCriteria(persistenceClass).list();
 	}
 	
+	@Override
+	public T loadObjeto(Long codigo) throws Exception {
+		return (T) sessionFactory.getCurrentSession().get(persistenceClass, codigo);
+	}
+	
 }
