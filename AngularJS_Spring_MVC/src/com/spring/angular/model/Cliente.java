@@ -17,6 +17,16 @@ public class Cliente {
 	private String endereco;
 	
 	private String telefone;
+	
+	private String sexo;
+	
+	public void setSexo(String sexo) {
+		this.sexo = sexo;
+	}
+	
+	public String getSexo() {
+		return sexo;
+	}
 
 	public Long getId() {
 		return id;

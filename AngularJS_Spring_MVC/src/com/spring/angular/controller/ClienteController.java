@@ -39,7 +39,7 @@ public class ClienteController extends DaoImpl<Cliente> implements DaoInterface<
 		
 		return new Gson().toJson(super.lista());
 		
-		// Injetando dados estáticos		
+		// Injetando dados estï¿½ticos		
 		/*List<Cliente> clientes = new ArrayList<Cliente>();
 		
 		Cliente cliente = new Cliente();		
@@ -71,8 +71,8 @@ public class ClienteController extends DaoImpl<Cliente> implements DaoInterface<
 		return "";
 	}
 	
-	@RequestMapping(value = "buscarcliente/{codcliente}", method = RequestMethod.GET	)
-	public @ResponseBody String buscarCliente (@PathVariable("codCliente") String codCliente) throws Exception {
+	@RequestMapping(value = "buscarcliente/{id}", method = RequestMethod.GET)
+	public @ResponseBody String buscarCliente (@PathVariable("id") String codCliente) throws Exception {
 		//System.out.println(codCliente);		
 		Cliente objeto = super.loadObjeto(Long.parseLong(codCliente));
 		if(objeto == null) {

@@ -34,7 +34,8 @@ app.controller("clienteController", function($scope, $http, $location, $routePar
 		$http.get("cliente/buscarcliente/" + $routeParams.id).success(function(response){
 			$scope.cliente =  response;
 		}).error(function(data, status, headers, config){
-			erro("Erro:" + status);
+			//erro("Erro:" + status);
+			erro("Error: " + status);
 		});
 	}else{
 		$scope.cliente = {};
@@ -44,7 +45,6 @@ app.controller("clienteController", function($scope, $http, $location, $routePar
 	$scope.editarCliente = function(id){
 		//alert($routeParams.id);
 		$location.path('clienteedit/' + id);
-		
 	};
 	
 	// Salvar
@@ -52,8 +52,10 @@ app.controller("clienteController", function($scope, $http, $location, $routePar
 		//alert($scope.cliente.telefone);		
 		$http.post("cliente/salvar", $scope.cliente).success(function(response){
 			$scope.cliente = {};
+			sucesso("Salvo com sucesso!");
 		}).error(function(data, status, headers, config) {
-			alert("Error:" + status);
+			//alert("Error:" + status);
+			erro("Error: " + status);
 		});
 	};
 	
@@ -62,7 +64,8 @@ app.controller("clienteController", function($scope, $http, $location, $routePar
 		$http.get("cliente/listar").success(function(response){
 			$scope.data =  response;
 		}).error(function(response){
-			alert("Erro" + response);
+			//alert("Erro" + response);
+			erro("Error: " + response);
 		});
 	};
 	
@@ -71,9 +74,29 @@ app.controller("clienteController", function($scope, $http, $location, $routePar
 		//alert(codCliente);
 		$http.delete("cliente/deletar/"+codCliente).success(function(response){
 			$scope.listarClientes();
+			sucesso("Removido com sucesso!");
 		}).error(function(data, status, headers, config){
-			alert("Error:" + status);
+			//alert("Error:" + status);
+			erro("Error: " + status);
 		});
 	};
 	
 });
+
+function sucesso(msg){
+	$.notify({
+        message: msg
+        },{
+            type: 'success',
+            timer: 1000
+	});
+}
+
+function erro(msg){
+	$.notify({
+        message: msg
+        },{
+            type: 'danger',
+            timer: 1000
+	});
+}
