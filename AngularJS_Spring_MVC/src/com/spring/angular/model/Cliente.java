@@ -4,6 +4,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
+import org.hibernate.annotations.ForeignKey;
 
 @Entity
 public class Cliente {
@@ -19,6 +22,40 @@ public class Cliente {
 	private String telefone;
 	
 	private String sexo;
+	
+	private Boolean ativo;
+	
+	private String interesse;
+	
+	@ManyToOne
+	@ForeignKey(name = "estados_fk")
+	private Estados	estados;
+	
+	public void setEstados(Estados estados) {
+		this.estados = estados;
+	}
+	
+	public Estados getEstados() {
+		return estados;
+	}
+	
+	public void setInteresse(String interesse) {
+		this.interesse = interesse;
+	}
+	
+	public String getInteresse() {
+		return interesse;
+	}
+	
+	public void setAtivo(Boolean ativo) {
+		if(ativo == null)
+			this.ativo = false;
+		this.ativo = ativo;
+	}
+	
+	public boolean getAtivo() {
+		return ativo;
+	}
 	
 	public void setSexo(String sexo) {
 		this.sexo = sexo;

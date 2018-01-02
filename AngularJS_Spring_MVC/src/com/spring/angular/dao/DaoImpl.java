@@ -64,4 +64,12 @@ public abstract class DaoImpl<T> implements DaoInterface<T> {
 		return (T) sessionFactory.getCurrentSession().get(persistenceClass, codigo);
 	}
 	
+	public SessionFactory getSessionFactory() {
+		return sessionFactory;
+	}
+	
+	public Class<T> getPersistenceClass(){
+		return persistenceClass;
+	}
+	
 }

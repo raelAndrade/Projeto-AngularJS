@@ -39,26 +39,26 @@ public class ClienteController extends DaoImpl<Cliente> implements DaoInterface<
 		
 		return new Gson().toJson(super.lista());
 		
-		// Injetando dados est�ticos		
-		/*List<Cliente> clientes = new ArrayList<Cliente>();
-		
-		Cliente cliente = new Cliente();		
-		cliente.setId(10L);
-		cliente.setNome("Israel");
-		cliente.setEndereco("Peixoto de Castro");
-		cliente.setTelefone("12 3301 - 1587");	
-		
-		clientes.add(cliente);		
-		
-		cliente = new Cliente();		
-		cliente.setId(102L);
-		cliente.setNome("Davi");
-		cliente.setEndereco("Raul rios");
-		cliente.setTelefone("12 3157 - 3722");	
-		
-		clientes.add(cliente);
-		
-		return new Gson().toJson(clientes);	*/
+			// Injetando dados est�ticos		
+			/*List<Cliente> clientes = new ArrayList<Cliente>();
+			
+			Cliente cliente = new Cliente();		
+			cliente.setId(10L);
+			cliente.setNome("Israel");
+			cliente.setEndereco("Peixoto de Castro");
+			cliente.setTelefone("12 3301 - 1587");	
+			
+			clientes.add(cliente);		
+			
+			cliente = new Cliente();		
+			cliente.setId(102L);
+			cliente.setNome("Davi");
+			cliente.setEndereco("Raul rios");
+			cliente.setTelefone("12 3157 - 3722");	
+			
+			clientes.add(cliente);
+			
+			return new Gson().toJson(clientes);	*/
 		
 	}
 	

@@ -27,9 +27,7 @@ app.config(function($routeProvider, $provide, $httpProvider, $locationProvider){
 });
 
 app.controller("clienteController", function($scope, $http, $location, $routeParams){
-	
-	//$scope.cliente = {};
-	
+
 	if($routeParams.id != null && $routeParams.id != undefined && $routeParams.id != ''){
 		$http.get("cliente/buscarcliente/" + $routeParams.id).success(function(response){
 			$scope.cliente =  response;
@@ -78,6 +76,26 @@ app.controller("clienteController", function($scope, $http, $location, $routePar
 		}).error(function(data, status, headers, config){
 			//alert("Error:" + status);
 			erro("Error: " + status);
+		});
+	};
+	
+	$scope.carregarCidades = function(estado) {
+		if (identific_nav() != 'chrome') {
+			$http.get("cidades/listar/" + estado.id).success(function(response) {
+				$scope.cidades = response;
+			}).error(function(data, status, headers, config) {
+				erro("Error: " + status);
+			});
+	  }
+	};
+	
+	$scope.carregarEstados = function(){
+		$scope.dataEstados = [{}];
+		$http.get("estados/listar").success(function(response){
+			$scope.dataEstados =  response;
+		}).error(function(response){
+			//alert("Erro" + response);
+			erro("Error: " + response);
 		});
 	};
 	

@@ -30,7 +30,6 @@
 		</property>
 	</bean>
 	
-	<!-- 
 	<bean id="flyway" class="org.flywaydb.core.Flyway" init-method="migrate" lazy-init="false"> 
     	<property name="dataSource" ref="springDataSource"/> 
     	<property name="baselineOnMigrate" value="true"/>  
@@ -40,7 +39,6 @@
     	<property name="encoding" value="ISO-8859-1"/> 
     	<property name="validateOnMigrate" value="true"/>
 	</bean>
-	 -->
 	 
 	<bean id="transactionManager" name="transactionManager" 
 		class="org.springframework.jdbc.datasource.DataSourceTransactionManager" lazy-init="false">
@@ -52,19 +50,15 @@
        	<constructor-arg value="com.spring.angular.model.Cliente"/>
     </bean>
 
-	<!-- 
 	<bean id="estadosController" name="estadosController"
 		class="com.spring.angular.controller.EstadosController">
 		<constructor-arg value="com.spring.angular.model.Estados" />
 	</bean>
-	-->
 	
-	<!-- 
 	<bean id="cidadesController" name="cidadesController"
 		class="com.spring.angular.controller.CidadesController">
 		<constructor-arg value="com.spring.angular.model.Cidades" />
 	</bean>
-	 -->
 	
 	<!-- 
 	<bean id="fornecedorController" name="fornecedorController"
