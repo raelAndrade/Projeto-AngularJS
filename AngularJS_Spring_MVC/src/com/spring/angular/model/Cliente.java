@@ -1,6 +1,10 @@
 package com.spring.angular.model;
 
+import java.io.Serializable;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -9,27 +13,66 @@ import javax.persistence.ManyToOne;
 import org.hibernate.annotations.ForeignKey;
 
 @Entity
-public class Cliente {
-	
+public class Cliente implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	
+
 	private String nome;
-	
+
 	private String endereco;
-	
+
 	private String telefone;
-	
-	private String sexo;
+
+	private String sexo; 
 	
 	private Boolean ativo;
 	
 	private String interesse;
 	
-	@ManyToOne
-	@ForeignKey(name = "estados_fk")
-	private Estados	estados;
+	private String cpf;
+	
+	@ManyToOne(fetch=FetchType.EAGER)
+	@ForeignKey(name="estados_fk")
+	private Estados estados = new Estados();
+	
+	
+	@ManyToOne(fetch=FetchType.EAGER)
+	@ForeignKey(name="cidades_fk")
+	private Cidades cidades = new Cidades();
+	
+	@Column(columnDefinition="text")
+	private String foto;
+	
+	//----------- Getters & Setters -----------//
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
+	
+	public String getCpf() {
+		return cpf;
+	}
+	
+	public void setFoto(String foto) {
+		this.foto = foto;
+	}
+	
+	public String getFoto() {
+		return foto;
+	}
+	
+	public void setCidades(Cidades cidades) {
+		this.cidades = cidades;
+	}
+	
+	
+	public Cidades getCidades() {
+		return cidades;
+	}
+	
 	
 	public void setEstados(Estados estados) {
 		this.estados = estados;
@@ -48,19 +91,20 @@ public class Cliente {
 	}
 	
 	public void setAtivo(Boolean ativo) {
-		if(ativo == null)
+		if (ativo == null) 
 			this.ativo = false;
+		
 		this.ativo = ativo;
 	}
 	
-	public boolean getAtivo() {
+	public Boolean getAtivo() {
 		return ativo;
 	}
-	
+
 	public void setSexo(String sexo) {
 		this.sexo = sexo;
 	}
-	
+
 	public String getSexo() {
 		return sexo;
 	}
@@ -121,5 +165,5 @@ public class Cliente {
 			return false;
 		return true;
 	}
-	
+
 }

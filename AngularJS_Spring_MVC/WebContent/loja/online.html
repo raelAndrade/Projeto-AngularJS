@@ -1,0 +1,44 @@
+<html ng-app="loja">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+
+<h1>Loja on-line de livros</h1>
+
+<br />
+<br />
+
+<div class="col-lg-9 col-md-8" ng-init="listarLivros(1);">
+	<div class="card">
+		<div class="content">
+			<form id="formLoja">			
+				<div class="row">
+					<div class="col-md-3" ng-repeat="livro in data">
+						<div class="form-group">
+							<label style="color: black;">{{livro.titulo}}</label>
+							<img alt="Foto de Capa" id="imagemLivro" src="{{livro.foto}}" style="width: 160px; height: 190px;" border="0">
+							<label onclick="mostrarDescricao(this.title);" title="{{livro.descricao}}">ver descrição</label>
+							<br>
+							<label style="color: blue;">{{livro.valor}}</label>
+							<br>
+							<button type="button" class="btn btn-info btn-fill btn-wd">Adiciona</button>
+						</div>
+					</div>
+				</div>
+			</form>
+			<br>
+			<br>
+			<div class="text-center">
+				<button type="button" class="btn btn-info btn-fill btn-wd" ng-click="anterior();">Anterior</button>
+				<button type="button" class="btn btn-info btn-fill btn-wd" ng-click="proximo();">Próximo</button>
+			</div>
+		</div>
+	</div>
+	<div id="descricaoLivro" title="Descrição resumida do livro">
+	</div>
+	<script type="text/javascript">
+		function mostrarDescricao(descricao){
+			$('#descricaoLivro').html("<p>"+descricao+"</p>").dialog({modal:true});
+		}
+	</script>
+</html>

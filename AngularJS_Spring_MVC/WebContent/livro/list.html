@@ -5,9 +5,9 @@
 <meta charset="utf-8" />
 </head>
 
-<h1>Lista de Clientes</h1>
+<h1>Lista de livros</h1>
 
-<a href="#cliente/cadastro">Novo <img alt="Novo" src="resources/img/add.png" border="0" />
+<a href="#livro/cadastro">Novo <img alt="Novo" src="resources/img/add.png" border="0" />
 </a>
 
 <br>
@@ -18,38 +18,36 @@
 
 <br />
 
-<div ng-controller="clienteController" ng-init="listarClientes(1);">
+<div ng-controller="livroController" ng-init="listarLivros(1);">
 	<div class="content table-responsive table-full-width">
 		<table class="table table-hover">
 			<thead>
 				<th>ID</th>
-				<th>Foto</th>
-				<th>Nome</th>
-				<th>Endereço</th>
-				<th>Telefone</th>
+				<th>Capa</th>
+				<th>Título</th>
+				<th>ISBN</th>
+				<th>Autor</th>
 				<th>Remover</th>
 				<th>Editar</th>
 			</thead>
 			<tbody>
-				<tr ng-repeat="cliente in data | filter:filtro">
-					<td>{{cliente.id}}</td>
-					<td><img src="{{cliente.foto}}"
-						style="width: 40px; height: 43px;" /></td>
-					<td>{{cliente.nome}}</td>
-					<td>{{cliente.endereco}}</td>
-					<td>{{cliente.telefone}}</td>
-					<td><a href ng-click="removerCliente(cliente.id);">Apagar
+				<tr ng-repeat="livro in data | filter:filtro">
+					<td>{{livro.id}}</td>
+					<td><img src="{{livro.foto}}" style="width: 40px; height: 43px;" /></td>
+					<td>{{livro.titulo}}</td>
+					<td>{{livro.isbn}}</td>
+					<td>{{livro.autor}}</td>
+					<td><a href ng-click="removerLivro(livro.id);">Apagar
 							<img alt="Remover" src="resources/img/delete.png" border="0" />
 					</a></td>
-					<td><a href ng-click="editarCliente(cliente.id);">Editar <img
-							alt="Editar" src="resources/img/edit.png" border="0" />
+					<td><a href ng-click="editarLivro(livro.id);">Editar 
+							<img alt="Editar" src="resources/img/edit.png" border="0" />
 					</a></td>
 				</tr>
 			</tbody>
 		</table>
 		
 		<div class="text-center">
-			<!-- Botão de paginação de clientes -->
 			<button type="button" class="btn btn-info btn-fill btn-wd" ng-click="anterior();">Anterior</button>
 			<button type="button" class="btn btn-info btn-fill btn-wd" ng-click="proximo();">Próximo</button>
 		</div>

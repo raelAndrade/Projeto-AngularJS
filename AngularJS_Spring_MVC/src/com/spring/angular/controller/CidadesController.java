@@ -40,7 +40,7 @@ public class CidadesController extends DaoImpl<Cidades> implements
 	
 	
 	/**
-	 * Usado para carregar as cidades com jQuery quando o navegador � chrome 
+	 * Usado para carregar as cidades com jQuery quando o navegador é chrome 
 	 * @param idEstado
 	 * @return JSON
 	 * @throws Exception

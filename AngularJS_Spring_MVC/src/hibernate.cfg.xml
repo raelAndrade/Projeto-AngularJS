@@ -24,7 +24,9 @@
 
 		<mapping class="com.spring.angular.model.Estados" />
 		<mapping class="com.spring.angular.model.Cidades" />
-		<mapping class="com.spring.angular.model.Cliente" />		
+		<mapping class="com.spring.angular.model.Cliente" />
+		<mapping class="com.spring.angular.model.Fornecedor" />
+		<mapping class="com.spring.angular.model.Livro" />
 		
 	</session-factory>
 </hibernate-configuration>

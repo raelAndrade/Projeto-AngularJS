@@ -17,7 +17,7 @@ public class Cidades {
 	
 	private String nome;
 	
-	@ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.REFRESH)
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.REFRESH)
 	private Estados estados;
 
 	public Long getId() {

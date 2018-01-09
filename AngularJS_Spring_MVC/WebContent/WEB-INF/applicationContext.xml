@@ -60,19 +60,15 @@
 		<constructor-arg value="com.spring.angular.model.Cidades" />
 	</bean>
 	
-	<!-- 
 	<bean id="fornecedorController" name="fornecedorController"
 		class="com.spring.angular.controller.FornecedorController">
 		<constructor-arg value="com.spring.angular.model.Fornecedor" />
 	</bean>
-	 -->
 	 
-	<!-- 
 	<bean id="livroController" name="livroController"
 		class="com.spring.angular.controller.LivroController">
 		<constructor-arg value="com.spring.angular.model.Livro" />
 	</bean>
-	 -->
 	 
 	<!-- 
 	<bean id="itemPedidoController" name="itemPedidoController"

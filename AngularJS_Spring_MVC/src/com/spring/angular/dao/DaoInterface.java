@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public interface DaoInterface<T> {
 
-	void salvar (T objeto) throws Exception;
+void salvar (T objeto) throws Exception;
 	
 	void deletar (T objeto) throws Exception;
 	
@@ -21,5 +21,18 @@ public interface DaoInterface<T> {
 	
 	List<T> lista() throws Exception;
 	
+	List<T> lista(String ids) throws Exception;
+	
+	List<T> lista(String campoBanco, String valorCampo) throws Exception;
+	
+	 List<T> lista(String campoBanco, Long valorCampo) throws Exception;
+	
+	List<T> listaLikeExpression(String campoBanco, String valorCampo) throws Exception;
+	
 	T loadObjeto(Long codigo) throws Exception;
+	
+	int quantidadePagina() throws Exception;
+	
+	List<T> consultaPaginada(String numeroPagina) throws Exception;
+	
 }

@@ -1,5 +1,8 @@
 package com.spring.angular.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -10,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.google.gson.Gson;
+
 import com.spring.angular.dao.DaoImpl;
 import com.spring.angular.dao.DaoInterface;
 import com.spring.angular.model.Cliente;
@@ -24,61 +28,54 @@ public class ClienteController extends DaoImpl<Cliente> implements DaoInterface<
 	
 	@RequestMapping(value = "salvar", method = RequestMethod.POST)
 	@ResponseBody
-	public ResponseEntity salvar (@RequestBody String jsonCliente) throws Exception {
-		//System.out.println(jsonCliente);
-		
+	public ResponseEntity salvar (@RequestBody String jsonCliente) throws Exception {	
 		Cliente cliente = new Gson().fromJson(jsonCliente, Cliente.class);
+		 if (cliente != null && cliente.getAtivo() == null){
+			 cliente.setAtivo(false);
+		 }
 		super.salvarOuAtualizar(cliente);
-		
 		return new ResponseEntity(HttpStatus.CREATED);
 	}
 	
-	@RequestMapping(value = "listar", method = RequestMethod.GET, headers = "Accept=application/json")
+	@RequestMapping(value = "listar/{numeroPagina}", method = RequestMethod.GET, headers = "Accept=application/json")
 	@ResponseBody
-	public String listar() throws Exception{
-		
-		return new Gson().toJson(super.lista());
-		
-			// Injetando dados est�ticos		
-			/*List<Cliente> clientes = new ArrayList<Cliente>();
-			
-			Cliente cliente = new Cliente();		
-			cliente.setId(10L);
-			cliente.setNome("Israel");
-			cliente.setEndereco("Peixoto de Castro");
-			cliente.setTelefone("12 3301 - 1587");	
-			
-			clientes.add(cliente);		
-			
-			cliente = new Cliente();		
-			cliente.setId(102L);
-			cliente.setNome("Davi");
-			cliente.setEndereco("Raul rios");
-			cliente.setTelefone("12 3157 - 3722");	
-			
-			clientes.add(cliente);
-			
-			return new Gson().toJson(clientes);	*/
-		
+	public byte[] listar(@PathVariable("numeroPagina") String numeroPagina) throws Exception{		
+		return new Gson().toJson(super.consultaPaginada(numeroPagina)).getBytes("UTF-8");		
+			// Injetando dados estáticos	
+			/*List<Cliente> clientes = new ArrayList<Cliente>();Cliente cliente = new Cliente();cliente.setId(10L);cliente.setNome("Israel");cliente.setEndereco("Peixoto de Castro");
+			 * cliente.setTelefone("12 3301 - 1587");clientes.add(cliente);cliente = new Cliente();cliente.setId(102L);cliente.setNome("Davi");cliente.setEndereco("Raul rios");
+			 * cliente.setTelefone("12 3157 - 3722");clientes.add(cliente);return new Gson().toJson(clientes);	*/		
 	}
 	
-	@RequestMapping(value = "deletar/{id}", method = RequestMethod.DELETE)
-	public @ResponseBody String deletar (@PathVariable("id") String codCliente) throws Exception {
-		//System.out.println(codCliente);
-		Cliente objeto = new Cliente();
-		objeto.setId(Long.parseLong(codCliente));
-		super.deletar(objeto);
+	@RequestMapping(value = "totalPagina", method = RequestMethod.GET, headers = "Accept=application/json")
+	@ResponseBody
+	public String totalPagina() throws Exception{	
+		return "" + super.quantidadePagina();
+	}
+	
+	@RequestMapping(value = "deletar/{codCliente}", method = RequestMethod.DELETE)
+	public @ResponseBody String deletar (@PathVariable("codCliente") String codCliente) throws Exception {
+		super.deletar(loadObjeto(Long.parseLong(codCliente)));
 		return "";
 	}
-	
-	@RequestMapping(value = "buscarcliente/{id}", method = RequestMethod.GET)
-	public @ResponseBody String buscarCliente (@PathVariable("id") String codCliente) throws Exception {
-		//System.out.println(codCliente);		
+
+	@RequestMapping(value = "buscarcliente/{codCliente}", method = RequestMethod.GET)
+	public @ResponseBody byte[] buscarCliente (@PathVariable("codCliente") String codCliente) throws Exception {	
 		Cliente objeto = super.loadObjeto(Long.parseLong(codCliente));
 		if(objeto == null) {
-			return "{}";
+			return "{}".getBytes("UTF-8");
 		}
-		return new Gson().toJson(objeto);
+		return new Gson().toJson(objeto).getBytes("UTF-8");
+	}
+	
+	@RequestMapping(value="buscarnome/{nomeCliente}", method=RequestMethod.GET)
+	public  @ResponseBody byte[] buscarNome (@PathVariable("nomeCliente") String nomeCliente) throws Exception {
+		List<Cliente> clientes = new ArrayList<Cliente>();
+		clientes = super.listaLikeExpression("nome", nomeCliente);
+		if (clientes == null || clientes.isEmpty() ) {
+			return "{}".getBytes("UTF-8");
+		}		
+		return new Gson().toJson(clientes).getBytes("UTF-8");
 	}
 
 }
