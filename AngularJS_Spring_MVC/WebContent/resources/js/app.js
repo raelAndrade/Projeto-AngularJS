@@ -65,6 +65,11 @@ app.config(function($routeProvider, $provide, $httpProvider, $locationProvider){
 
 //===================== Configurações do controller da loja online ======================//
 app.controller('lojaController', function($scope, $http, $location, $routeParams){
+	$scope.carrinhoLivro = new Array();
+	$scope.addLivro = function(livroid){
+		$scope.carrinhoLivro.push(livroid);
+		alert($scope.carrinhoLivro);
+	};
 	
 	// Listar todos livros
 	$scope.listarLivros = function(numeroPagina){
@@ -257,16 +262,11 @@ app.controller('clienteController', function($scope, $http, $location, $routePar
 	// Salvar
 	$scope.salvarCliente = function name(){		
 		//alert($scope.cliente.telefone);
-		$scope.cliente.foto = document.getElementById("imagemCliente").getAttribute("src");
-		
-		$http.post("cliente/salvar", $scope.cliente).success(function(response){
-			
-			$scope.cliente = {};
-			
-			document.getElementById("imagemCliente").src = '';
-			
-			sucesso("Salvo com sucesso!");
-			
+		$scope.cliente.foto = document.getElementById("imagemCliente").getAttribute("src");		
+		$http.post("cliente/salvar", $scope.cliente).success(function(response){			
+			$scope.cliente = {};			
+			document.getElementById("imagemCliente").src = '';			
+			sucesso("Salvo com sucesso!");			
 		}).error(function(response) {
 			//alert("Error:" + status);
 			erro("Error: " + response);
