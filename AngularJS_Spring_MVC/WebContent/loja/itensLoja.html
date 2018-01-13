@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html ng-app="loja">
+
+<head>
+<meta charset="utf-8" />
+</head>
+
+<h1>Itens Carrinho</h1>
+
+<label>Filtro: <input class="form-control border-input" type="text" ng-model="filtro" /></label>
+
+<br>
+<br>
+
+<div ng-controller="lojaController"">
+	<div class="content table-responsive table-full-width">
+		<table class="table table-hover">
+			<thead>
+				<th>ID</th>
+				<th>Capa</th>
+				<th>Título</th>
+				<th>Quantidade</th>
+				<th>Valor</th>
+				<th>Remover</th>
+			</thead>
+			<tbody>
+				<tr ng-repeat="item in itensCarrinho | filter:filtro">
+					<td>{{item.livro.id}}</td>
+					<td><img src="{{livro.foto}}" style="width: 80px; height: 100px;" /></td>
+					<td>{{item.livro.titulo}}</td>
+					<td><input type="number" value="{{item.quantidade}}" size="10"/></td>
+					<td>{{item.livro.valor}}</td>
+					<td><a href ng-click="removerLivroCarrinho(item.livro.id);">Apagar
+							<img alt="Remover" src="resources/img/delete.png" border="0" />
+					</a></td>
+				</tr>
+			</tbody>
+		</table>
+		<h1>Valor total: {{pedidoObjeto.valorTotal}}</h1>
+		<div class="text-center">
+			<button type="button" class="btn btn-info btn-fill btn-wd" ng-click="anterior();">Anterior</button>
+			<button type="button" class="btn btn-info btn-fill btn-wd" ng-click="proximo();">Próximo</button>
+		</div>
+	</div>
+</div>
+</html>

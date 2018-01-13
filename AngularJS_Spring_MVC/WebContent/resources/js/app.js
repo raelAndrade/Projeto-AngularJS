@@ -57,6 +57,11 @@ app.config(function($routeProvider, $provide, $httpProvider, $locationProvider){
 		controller : "lojaController",
 		templateUrl: "loja/online.html"
 	}) // novo
+	.when("/loja/itensLoja/:itens", {
+		controller : "lojaController",
+		templateUrl: "loja/itensLoja.html"
+	}) // novo
+	
 	.otherwise({
 		redirectTo : "/"
 	});
@@ -65,10 +70,28 @@ app.config(function($routeProvider, $provide, $httpProvider, $locationProvider){
 
 //===================== Configurações do controller da loja online ======================//
 app.controller('lojaController', function($scope, $http, $location, $routeParams){
-	$scope.carrinhoLivro = new Array();
+	
+	if($routeParams.itens != null && $routeParams.itens.length > 0){
+		$http.get("itempedido/processar" + $routeParams.itens).success(function(response){
+			
+			$scope.itensCarrinho = response;
+			
+			$scope.pedidoObjeto = response[0].pedido;
+				
+		}).error(function(response){
+			erro("Error: " + response);
+		});
+
+	}else{
+		$scope.carrinhoLoja = new Array();
+	}
+	
 	$scope.addLivro = function(livroid){
 		$scope.carrinhoLivro.push(livroid);
-		alert($scope.carrinhoLivro);
+	};
+	
+	$scope.fecharPedido = function(){
+		$location.path('loja/itensLoja/' + $scope.carrinhoLoja);
 	};
 	
 	// Listar todos livros

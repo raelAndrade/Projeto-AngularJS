@@ -27,6 +27,8 @@
 		<mapping class="com.spring.angular.model.Cliente" />
 		<mapping class="com.spring.angular.model.Fornecedor" />
 		<mapping class="com.spring.angular.model.Livro" />
+		<mapping class="com.spring.angular.model.Pedido" />
+		<mapping class="com.spring.angular.model.ItemPedido" />
 		
 	</session-factory>
 </hibernate-configuration>
