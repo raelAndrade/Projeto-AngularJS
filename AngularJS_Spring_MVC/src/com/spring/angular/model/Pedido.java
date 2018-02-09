@@ -1,10 +1,15 @@
 package com.spring.angular.model;
 
+import java.util.Calendar;
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.ForeignKey;
 
@@ -20,6 +25,17 @@ public class Pedido {
 	private Cliente cliente;
 	
 	private String valorTotal;
+	
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date data = Calendar.getInstance().getTime();
+	
+	public void setData(Date data) {
+		this.data = data;
+	}
+	
+	public Date getData() {
+		return data;
+	}
 
 	public Long getId() {
 		return id;
