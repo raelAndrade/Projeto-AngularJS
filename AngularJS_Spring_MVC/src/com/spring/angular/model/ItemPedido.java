@@ -14,15 +14,15 @@ public class ItemPedido {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	
+
 	@ManyToOne
 	@ForeignKey(name = "livro_fk")
 	private Livro livro;
-	
+
 	@ManyToOne
 	@ForeignKey(name = "pedido_fk")
 	private Pedido pedido;
-	
+
 	private Long quantidade;
 
 	public Long getId() {
@@ -36,7 +36,7 @@ public class ItemPedido {
 	public Livro getLivro() {
 		return livro;
 	}
-	
+
 	public void setLivro(Livro livro) {
 		this.livro = livro;
 	}
@@ -80,6 +80,6 @@ public class ItemPedido {
 		} else if (!id.equals(other.id))
 			return false;
 		return true;
-	}	
-	
+	}
+
 }

@@ -12,6 +12,11 @@ import javax.persistence.ManyToOne;
 
 import org.hibernate.annotations.ForeignKey;
 
+/**
+ * Modelo que representa a tabela de Cliente do banco de dados
+ * @author Israel
+ *
+ */
 @Entity
 public class Cliente implements Serializable {
 
@@ -47,7 +52,6 @@ public class Cliente implements Serializable {
 	@Column(columnDefinition="text")
 	private String foto;
 	
-	//----------- Getters & Setters -----------//
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}

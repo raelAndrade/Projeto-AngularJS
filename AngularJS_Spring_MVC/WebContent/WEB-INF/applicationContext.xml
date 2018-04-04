@@ -30,6 +30,7 @@
 		</property>
 	</bean>
 	
+	<!--
 	<bean id="flyway" class="org.flywaydb.core.Flyway" init-method="migrate" lazy-init="false"> 
     	<property name="dataSource" ref="springDataSource"/> 
     	<property name="baselineOnMigrate" value="true"/>  
@@ -39,7 +40,8 @@
     	<property name="encoding" value="ISO-8859-1"/> 
     	<property name="validateOnMigrate" value="true"/>
 	</bean>
-	 
+	-->
+	
 	<bean id="transactionManager" name="transactionManager" 
 		class="org.springframework.jdbc.datasource.DataSourceTransactionManager" lazy-init="false">
         <property name="dataSource" ref="springDataSource"/>
@@ -79,18 +81,13 @@
 		class="com.spring.angular.controller.PedidoController">
 		<constructor-arg value="com.spring.angular.model.Pedido" />
 	</bean>
-	
 	 
-	<!-- 
 	<bean id="fileDownloadController" name="fileDownloadController"
 		class="com.spring.angular.controller.FileDownloadController">
 	</bean>
-	 -->
-	
-	<!-- 
+
 	<bean id="reportUtil" name="reportUtil"
 		class="com.spring.angular.controller.ReportUtil">
 	</bean>
-     -->
      
 </beans>

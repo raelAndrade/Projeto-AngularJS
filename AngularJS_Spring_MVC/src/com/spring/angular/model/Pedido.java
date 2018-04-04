@@ -15,19 +15,20 @@ import org.hibernate.annotations.ForeignKey;
 
 @Entity
 public class Pedido {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	
+
 	@ManyToOne
 	@ForeignKey(name = "cliente_fk")
 	private Cliente cliente;
-	
 	private String valorTotal;
 	
+	
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date data = Calendar.getInstance().getTime();
+	private Date data;
+	
 	
 	public void setData(Date data) {
 		this.data = data;

@@ -16,34 +16,33 @@ public class Fornecedor {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	
+
 	private String razaoSocial;
-	
+
 	private String nomeFantasia;
-	
+
 	private String endereco;
-	
+
 	private String cnpj;
-	
+
 	private Long inscricaoEstadual;
+	
+	private String telefone;
+
+	@ManyToOne(fetch = FetchType.EAGER)
+	@ForeignKey(name = "estados_fk")
+	private Estados estados = new Estados();
+
+	@ManyToOne(fetch = FetchType.EAGER)
+	@ForeignKey(name = "cidades_fk")
+	private Cidades cidades = new Cidades();
+
+	@Column(columnDefinition = "text")
+	private String foto;
 	
 	private Boolean ativo;
 	
-	private String telefone;
 	
-	@ManyToOne(fetch=FetchType.EAGER)
-	@ForeignKey(name="estados_fk")
-	private Estados estados = new Estados();
-	
-	
-	@ManyToOne(fetch=FetchType.EAGER)
-	@ForeignKey(name="cidades_fk")
-	private Cidades cidades = new Cidades();
-	
-	@Column(columnDefinition="text")
-	private String foto;
-	
-	//========= Getters & Setters ===========//
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
 	}
@@ -59,7 +58,7 @@ public class Fornecedor {
 	public Boolean getAtivo() {
 		return ativo;
 	}
-	
+
 	public Long getId() {
 		return id;
 	}
@@ -156,5 +155,5 @@ public class Fornecedor {
 			return false;
 		return true;
 	}
-		
+
 }

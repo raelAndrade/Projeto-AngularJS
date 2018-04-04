@@ -12,6 +12,7 @@
 
 <title>AngukarJS - Spring - MVC</title>
 
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript" src="resources/js/jquery-1.10.2.js"></script>
 
 <script type="text/javascript" src="resources/js/angular.min.js"></script>
@@ -41,7 +42,12 @@
 <link href="resources/css/themify-icons.css" rel="stylesheet" />
 <link href="resources/css/jquery-ui.css" rel="stylesheet" />
 
+<!-- Controllers -->
 <script type="text/javascript" src="resources/js/app.js"></script>
+<script type="text/javascript" src="resources/js/lojaController.js"></script>
+<script type="text/javascript" src="resources/js/livroController.js"></script>
+<script type="text/javascript" src="resources/js/clienteController.js"></script>
+<script type="text/javascript" src="resources/js/fornecedorController.js"></script>
 
 </head>
 <body id="corpo">
@@ -62,6 +68,12 @@
 					</a></li>
 					<li class="active"><a href="#/loja/online">
 							<p>Loja online</p>
+					</a></li>
+					<li class="active"><a href="#/loja/pedidos">
+							<p>Pedidos</p>
+					</a></li>
+					<li class="active"><a href="#/grafico/media_pedido">
+							<p>Média Pedido</p>
 					</a></li>
 				</ul>
 			</div>
@@ -84,8 +96,8 @@
 									<li><a href="#/fornecedor/cadastro">Novo Fornecedor</a></li>
 									<li><a href="#/livro/cadastro">Novo Livro</a></li>
 									<li><a href="#/loja/online">Loja de Livros</a></li>
-									<li><a href="#">Notification 4</a></li>
-									<li><a href="#">Another notification</a></li>
+									<li><a href="#/loja/pedidos">Pedidos</a></li>
+									<li><a href="#/grafico/media_pedido">Média de Livro por Pedido</a></li>
 								</ul></li>
 							<li><a href="#">
 									<p>Sair</p>
@@ -115,5 +127,17 @@
     	});
 
 	});
+	
+	$.get("livro/autenticar", function(data) {
+// 		alert(data);
+		json = JSON.parse(data);
+// 		alert(json.user);
+		permissao = json.permissao;
+// 		alert(json.permissoes);
+		if(json.permissoes.toString().indexOf("SECRETARIO") >= 0){
+			location.href = 'secretario.html';
+		}
+	});
+	
 </script>
 </html>

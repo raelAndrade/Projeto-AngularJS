@@ -12,7 +12,7 @@ public class HibernateUtil implements Serializable {
 	private static SessionFactory sessionFactory = buildSessionFactory();
 	
 	/**
-	 * Respons·vel por ler o arquivo de configuraÁ„o hibernate.cfg.xml
+	 * Respons√°vel por ler o arquivo de configura√ß√£o hibernate.cfg.xml
 	 * 
 	 * @return SessionFactory
 	 */
@@ -27,7 +27,7 @@ public class HibernateUtil implements Serializable {
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw new ExceptionInInitializerError(
-					"Erro ao criar conex„o SessionFactory");
+					"Erro ao criar conex√£o SessionFactory");
 		}
 	}
 

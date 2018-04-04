@@ -25,24 +25,31 @@ public class FornecedorController extends DaoImpl<Fornecedor> implements DaoInte
 	
 	@RequestMapping(value = "salvar", method = RequestMethod.POST)
 	@ResponseBody
-	public ResponseEntity salvar (@RequestBody String jsonFornecedor) throws Exception {
-		Fornecedor fornecedor = new Gson().fromJson(jsonFornecedor, Fornecedor.class);
+	public ResponseEntity salvar(@RequestBody String jsonFornecedor)
+			throws Exception {
+		Fornecedor fornecedor = new Gson().fromJson(jsonFornecedor,
+				Fornecedor.class);
+
 		if (fornecedor != null && fornecedor.getAtivo() == null) {
 			fornecedor.setAtivo(false);
 		}
-		super.salvarOuAtualizar(fornecedor);		
+
+		super.salvarOuAtualizar(fornecedor);
 		return new ResponseEntity(HttpStatus.CREATED);
+
 	}
 	
 	@RequestMapping(value = "listar/{numeroPagina}", method = RequestMethod.GET, headers = "Accept=application/json")
 	@ResponseBody
-	public byte[] listar(@PathVariable("numeroPagina") String numeroPagina) throws Exception{		
-		return new Gson().toJson(super.consultaPaginada(numeroPagina)).getBytes("UTF-8");				
+	public String listar(@PathVariable("numeroPagina") String numeroPagina)
+			throws Exception {
+		return new Gson().toJson(super.consultaPaginada(numeroPagina));
 	}
 	
 	@RequestMapping(value = "listartodos", method = RequestMethod.GET, headers = "Accept=application/json")
 	@ResponseBody
-	public String listartodos() throws Exception {
+	public String listartodos()
+			throws Exception {
 		return new Gson().toJson(super.lista());
 	}
 	

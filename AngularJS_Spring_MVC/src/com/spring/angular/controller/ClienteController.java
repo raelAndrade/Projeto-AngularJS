@@ -41,7 +41,7 @@ public class ClienteController extends DaoImpl<Cliente> implements DaoInterface<
 	@ResponseBody
 	public byte[] listar(@PathVariable("numeroPagina") String numeroPagina) throws Exception{		
 		return new Gson().toJson(super.consultaPaginada(numeroPagina)).getBytes("UTF-8");		
-			// Injetando dados estáticos	
+			// Injetando dados estáticos
 			/*List<Cliente> clientes = new ArrayList<Cliente>();Cliente cliente = new Cliente();cliente.setId(10L);cliente.setNome("Israel");cliente.setEndereco("Peixoto de Castro");
 			 * cliente.setTelefone("12 3301 - 1587");clientes.add(cliente);cliente = new Cliente();cliente.setId(102L);cliente.setNome("Davi");cliente.setEndereco("Raul rios");
 			 * cliente.setTelefone("12 3157 - 3722");clientes.add(cliente);return new Gson().toJson(clientes);	*/		
@@ -53,12 +53,12 @@ public class ClienteController extends DaoImpl<Cliente> implements DaoInterface<
 		return "" + super.quantidadePagina();
 	}
 	
-	@RequestMapping(value = "deletar/{codCliente}", method = RequestMethod.DELETE)
+	@RequestMapping(value="deletar/{codCliente}", method=RequestMethod.DELETE)
 	public @ResponseBody String deletar (@PathVariable("codCliente") String codCliente) throws Exception {
 		super.deletar(loadObjeto(Long.parseLong(codCliente)));
 		return "";
 	}
-
+	
 	@RequestMapping(value = "buscarcliente/{codCliente}", method = RequestMethod.GET)
 	public @ResponseBody byte[] buscarCliente (@PathVariable("codCliente") String codCliente) throws Exception {	
 		Cliente objeto = super.loadObjeto(Long.parseLong(codCliente));
@@ -71,6 +71,7 @@ public class ClienteController extends DaoImpl<Cliente> implements DaoInterface<
 	@RequestMapping(value="buscarnome/{nomeCliente}", method=RequestMethod.GET)
 	public  @ResponseBody byte[] buscarNome (@PathVariable("nomeCliente") String nomeCliente) throws Exception {
 		List<Cliente> clientes = new ArrayList<Cliente>();
+		// System.out.println(nomeCliente);
 		clientes = super.listaLikeExpression("nome", nomeCliente);
 		if (clientes == null || clientes.isEmpty() ) {
 			return "{}".getBytes("UTF-8");

@@ -1,7 +1,5 @@
 package com.spring.angular.model;
 
-import java.math.BigDecimal;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -18,27 +16,36 @@ public class Livro {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	
+
 	private String titulo;
 	
 	private String autor;
-	
+
 	private String descricao;
-	
+
 	private Long isbn;
-	
+
 	private Long ano;
-	
+
 	private Long paginas;
-	
+
 	@Column(columnDefinition = "text")
 	private String foto;
-	
+
 	@ManyToOne(fetch = FetchType.EAGER)
 	@ForeignKey(name = "fornecedor_fk")
 	private Fornecedor fornecedor;
 	
 	private String valor = "";
+	
+	
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
+	}
+	
+	public String getTitulo() {
+		return titulo;
+	}
 	
 	public void setValor(String valor) {
 		this.valor = valor;
@@ -46,14 +53,6 @@ public class Livro {
 	
 	public String getValor() {
 		return valor;
-	}
-	
-	public String getTitulo() {
-		return titulo;
-	}
-	
-	public void setTitulo(String titulo) {
-		this.titulo = titulo;
 	}
 
 	public Long getId() {
@@ -144,5 +143,5 @@ public class Livro {
 			return false;
 		return true;
 	}
-	
+
 }
